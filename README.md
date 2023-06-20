@@ -2,7 +2,7 @@
 
 # StPageFlip
 
-Powerful, simple, and flexible JS Library for creating realistic and beautiful page turning effect.
+Powerful, simple, and flexible JS Library for creating realistic and beautiful page turning effect. (including additional feature: reverse nextFlip)
 
 ![](video.gif)
 
@@ -153,6 +153,7 @@ Event object has two fields: `data: number | string` and `object: PageFlip`
 -   `turnToNextPage()` - Turn to the next page (without animation)
 -   `turnToPrevPage()` - Turn to the previous page (without animation)
 -   `flipNext(corner: 'top' | 'bottom')` - Turn to the next page (with animation)
+-   `flipReverse(corner: 'top' | 'bottom')` - reverse next page effect (with animation)
 -   `flipPrev(corner: 'top' | 'bottom')` - Turn to the previous page (with animation)
 -   `flip(pageNum: number, corner: 'top' | 'bottom')` - Turn to the specified page (with animation)
 -   `loadFromImages(images: ['path-to-image1.jpg', ...])` - Load page from images
