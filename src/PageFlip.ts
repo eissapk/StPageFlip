@@ -205,6 +205,15 @@ export class PageFlip extends EventObject {
     }
 
     /**
+     * reverse the next page effect (with animation)
+     *
+     * @param {FlipCorner} corner - Active page corner when turning
+     */
+    public flipReverse(corner: FlipCorner = FlipCorner.TOP): void {
+        this.flipController.flipReverse(corner);
+    }
+
+    /**
      * Turn to the prev page (with animation)
      *
      * @param {FlipCorner} corner - Active page corner when turning

@@ -100,12 +100,19 @@ export class Flip {
         // Сalculations for these points
         this.calc.calc({ x: rect.pageWidth - topMargins, y: yStart });
 
+        const startObj = { x: rect.pageWidth - topMargins, y: yStart };
+        const destObj = { x: -rect.pageWidth, y: yDest };
+
         // Run flipping animation
-        this.animateFlippingTo(
-            { x: rect.pageWidth - topMargins, y: yStart },
-            { x: -rect.pageWidth, y: yDest },
-            true
-        );
+        if (globalPos.type == "reverse") {
+            this.animateFlippingTo(
+                destObj,
+                startObj,
+                true
+            );
+            return;
+        }
+        this.animateFlippingTo(startObj, destObj, true);
     }
 
     /**
@@ -244,6 +251,20 @@ export class Flip {
         this.flip({
             x: this.render.getRect().left + this.render.getRect().pageWidth * 2 - 10,
             y: corner === FlipCorner.TOP ? 1 : this.render.getRect().height - 2,
+            type: "next"
+        });
+    }
+
+    /**
+     * reverse next page effect (with animation)
+     *
+     * @param {FlipCorner} corner - Active page corner when turning
+     */
+    public flipReverse(corner: FlipCorner): void {
+        this.flip({
+            x: this.render.getRect().left + this.render.getRect().pageWidth * 2 - 10,
+            y: corner === FlipCorner.TOP ? 1 : this.render.getRect().height - 2,
+            type: "reverse"
         });
     }
 
@@ -256,6 +277,7 @@ export class Flip {
         this.flip({
             x: 10,
             y: corner === FlipCorner.TOP ? 1 : this.render.getRect().height - 2,
+            type: "prev"
         });
     }
 
